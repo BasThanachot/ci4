@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "question-bank",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["-S", "localhost:8080", "-t", "/Applications/XAMPP/xamppfiles/htdocs/pretest"],
+      "port": 8080
+    }
+  ]
+}

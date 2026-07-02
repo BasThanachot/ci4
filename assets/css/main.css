@@ -1,0 +1,3664 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 31, 2018, 9:21:56 AM
+    Author     : pattana.sangaroon@gmail.com
+*/
+@charset "utf-8";
+
+a {
+    text-decoration:none;
+}
+img {
+    border:0px;
+}
+input  {
+    border:0px;
+}
+body{
+    margin:0;
+    font:normal 75% Arial, Helvetica, sans-serif;
+}
+canvas{
+    display: block;
+    vertical-align: bottom;
+} /* ---- particles.js container ---- */
+#particles-js{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #3a2e54;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+} /* ---- stats.js ---- */
+.count-particles{
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+.js-count-particles{
+    font-size: 1.1em;
+}
+#stats, .count-particles{
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+#stats{
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+.count-particles{
+    border-radius: 0 0 3px 3px;
+}
+html {
+    overflow-y:  scroll;
+}
+/*all text*/
+@font-face {
+    font-family: 'tsb';
+    src: url('fonts/THSarabunNew.eot');
+    src: url('fonts/THSarabunNew.woff') format('woff'), url('fonts/THSarabunNew.ttf') format('truetype'), url('fonts/THSarabunNew.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.tsb {
+    font-family:tsb;
+}
+@font-face {
+    font-family: 'tsbb';
+    src: url('fonts/THSarabunNewBold.eot');
+    src: url('fonts/THSarabunNewBold.woff') format('woff'), url('fonts/THSarabunNewBold.ttf') format('truetype'), url('fonts/THSarabunNewBold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.tsbb {
+    font-family:tsbb;
+}
+@font-face {
+    font-family: 'tsl';
+    src: url('fonts/thaisanslite_r1-webfont.eot');
+    src: url('fonts/thaisanslite_r1-webfont.woff2') format('woff2'),
+        url('fonts/thaisanslite_r1-webfont.woff') format('woff'),
+        url('fonts/thaisanslite_r1-webfont.ttf') format('truetype'),
+        url('fonts/thaisanslite_r1-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.tsl {
+    font-family:tsl;
+}
+@font-face {
+    font-family: 'th_cm';
+    src: url('fonts/th_charmonman-webfont.eot');
+    src: url('fonts/th_charmonman-webfont.woff2') format('woff2'),
+        url('fonts/th_charmonman-webfont.woff') format('woff'),
+        url('fonts/th_charmonman-webfont.ttf') format('truetype'),
+        url('fonts/th_charmonman-webfont.svg#th_charmonmanregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.th_cm {
+    font-family:th_cm;
+}
+
+
+@font-face {
+    font-family: 'th_cmb';
+    src: url('fonts/th_charmonman_bold-webfont.eot');
+    src: url('fonts/th_charmonman_bold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/th_charmonman_bold-webfont.woff2') format('woff2'),
+        url('fonts/th_charmonman_bold-webfont.woff') format('woff'),
+        url('fonts/th_charmonman_bold-webfont.ttf') format('truetype'),
+        url('fonts/th_charmonman_bold-webfont.svg#th_charmonmanbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.th_cmb {
+    font-family:th_cmb;
+}
+
+
+@font-face {
+    font-family: 'th_cpb';
+    src: url('fonts/th_chakra_petch_bold-webfont.eot');
+    src: url('fonts/th_chakra_petch_bold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/th_chakra_petch_bold-webfont.woff2') format('woff2'),
+        url('fonts/th_chakra_petch_bold-webfont.woff') format('woff'),
+        url('fonts/th_chakra_petch_bold-webfont.ttf') format('truetype'),
+        url('fonts/th_chakra_petch_bold-webfont.svg#th_chakra_petchbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.th_cpb {
+    font-family:th_cpb;
+}
+
+
+@font-face {
+    font-family: 'th_cp';
+    src: url('fonts/th_chakra_petch-webfont.eot');
+    src: url('fonts/th_chakra_petch-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/th_chakra_petch-webfont.woff2') format('woff2'),
+        url('fonts/th_chakra_petch-webfont.woff') format('woff'),
+        url('fonts/th_chakra_petch-webfont.ttf') format('truetype'),
+        url('fonts/th_chakra_petch-webfont.svg#th_chakra_petchregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.th_cp {
+    font-family:th_cp;
+}
+
+
+.gf_Kanit {
+    font-family: 'Kanit', sans-serif;
+}
+
+.gf_Pridi {
+    font-family: 'Pridi', serif;
+}
+.gf_Taviraj {
+    font-family: 'Taviraj', serif;
+}
+.gf_Maitree {
+    font-family: 'Maitree', serif;
+}
+
+/*----------------------------------------- overflow --------------------------------------------*/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+.ofy_s {
+    overflow-y:  scroll;
+}
+.ofx_s {
+    overflow-x:  scroll;
+}
+
+.textof{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.tcdred	{
+    color:#aa5555;
+}
+.dtcdred {
+    color:#AAAAAA;
+}
+.dtcdred:hover	{
+    color:#aa5555;
+}
+.dtcdredlight {
+    color:#DDDDDD;
+}
+.dtcdred:hover	{
+    color:#aa5555;
+}
+
+.tcred      {
+    color:#FF0000;
+}
+.tcblue     {
+    color:#0000FF;
+}
+.tcgreen    {
+    color:#55FF55;
+}
+.tcdgreen   {
+    color:#013d07;
+}
+.tcorange   {
+    color:#FFB84C;
+}
+
+.thov:hover{
+    color:#9900aa;
+}
+
+.tt	{
+    font-family:Tahoma;
+    font-weight:normal;
+}
+
+.tshf {
+    text-shadow: 0px 1px 1px #ffffff;
+}
+.tsha {
+    text-shadow: 0px 1px 1px #aaaaaa;
+}
+
+.tsh17	{
+    text-shadow: 0px 1px 1px #171717;
+}
+.dtsh17:hover	{
+    text-shadow: 0px 1px 1px #171717;
+}
+.tsh99	{
+    text-shadow: 0px 1px 1px #999999;
+}
+
+.ta-c {
+    text-align: center;
+}
+.ta-l {
+    text-align: left;
+}
+.ta-r {
+    text-align: right;
+}
+.tbdf {
+    border-spacing:'0px';
+    border-collapse: separate;
+}
+
+
+.ts3	{
+    font-size:3pt;
+}
+.ts4	{
+    font-size:4pt;
+}
+.ts5	{
+    font-size:5pt;
+}
+.ts6	{
+    font-size:6pt;
+}
+.ts7	{
+    font-size:7pt;
+}
+.ts8	{
+    font-size:8pt;
+}
+.ts6	{
+    font-size:9pt;
+}
+.ts10	{
+    font-size:10pt;
+}
+.ts11	{
+    font-size:11pt;
+}
+.ts12	{
+    font-size:12pt;
+}
+.ts13	{
+    font-size:13pt;
+}
+.ts14	{
+    font-size:14pt;
+}
+.ts15	{
+    font-size:15pt;
+}
+.ts16	{
+    font-size:16pt;
+}
+.ts17	{
+    font-size:17pt;
+}
+.ts18	{
+    font-size:18pt;
+}
+.ts19	{
+    font-size:19pt;
+}
+.ts20	{
+    font-size:20pt;
+}
+.ts21	{
+    font-size:21pt;
+}
+.ts22	{
+    font-size:22pt;
+}
+.ts23	{
+    font-size:23pt;
+}
+.ts24	{
+    font-size:24pt;
+}
+.ts25	{
+    font-size:25pt;
+}
+.ts26	{
+    font-size:26pt;
+}
+.ts27	{
+    font-size:27pt;
+}
+.ts28	{
+    font-size:28pt;
+}
+.ts29	{
+    font-size:29pt;
+}
+.ts30	{
+    font-size:30pt;
+}
+.ts31	{
+    font-size:31pt;
+}
+.ts32	{
+    font-size:32pt;
+}
+.ts33	{
+    font-size:33pt;
+}
+.ts34	{
+    font-size:34pt;
+}
+.ts35	{
+    font-size:35pt;
+}
+.ts36	{
+    font-size:36pt;
+}
+.ts37	{
+    font-size:37pt;
+}
+.ts38	{
+    font-size:38pt;
+}
+.ts39	{
+    font-size:39pt;
+}
+.ts40	{
+    font-size:40pt;
+}
+.ts50	{
+    font-size:50pt;
+}
+.ts60	{
+    font-size:60pt;
+}
+.tcg	{
+    color:gray;
+}
+.tcg0	{
+    color:#000000;
+}
+.tcg1	{
+    color:#111111;
+}
+.tcg2	{
+    color:#222222;
+}
+.tcg3	{
+    color:#333333;
+}
+.tcg4	{
+    color:#444444;
+}
+.tcg5	{
+    color:#555555;
+}
+.dtcg5	{
+    color:#555555;
+}
+.dtcg5:hover	{
+    color:#ffffff;
+}
+.tcg6	{
+    color:#666666;
+}
+.tcg7	{
+    color:#777777;
+}
+.tcg8	{
+    color:#888888;
+}
+.tcg9	{
+    color:#999999;
+}
+.tcga	{
+    color:#AAAAAA;
+}
+.dtcga	{
+    color:#AAAAAA;
+}
+.dtcga:hover	{
+    color:#000000;
+}
+.tcgb	{
+    color:#BBBBBB;
+}
+.tcgc	{
+    color:#CCCCCC;
+}
+.tcge	{
+    color:#EEEEEE;
+}
+.tcgf	{
+    color:#FFFFFF;
+}
+.tcv5	{
+    color:#550055;
+}
+
+.ta_l {
+    text-align:left;
+}
+.ta_r {
+    text-align:right;
+}
+.ta_c {
+    text-align:center;
+}
+.va_t {
+    vertical-align:top;
+}
+.va_m {
+    vertical-align:middle;
+}
+.va_b {
+    vertical-align:bottom;
+}
+.tlm {
+    text-decoration : line-through;
+}
+/*----------------------------------------- text color --------------------------------------------*/
+/*!---------------------------------------- position --------------------------------------------------------------*/
+.linkon{
+    cursor:pointer;
+}
+.move{
+    cursor: move;
+}
+.pad5{
+    padding: 5px 5px 5px 5px;
+}
+.pad10{
+    padding:	10px 10px 10px 10px;
+}
+.padv5{
+    padding:	5px 0px 5px 0px;
+}
+.padv10{
+    padding: 10px 0px 10px 0px;
+}
+.pad2{
+    padding:	2px 2px 2px 2px;
+}
+.pad4{
+    padding:	4px 4px 4px 4px;
+}
+.padh2{
+    padding:	0px 2px 0px 2px;
+}
+.padh5{
+    padding:	0px 5px 0px 5px;
+}
+
+.padh10{
+    padding:	0px 10px 0px 10px;
+}
+
+.padl5{
+    padding-left: 5px;
+}
+.padl10{
+    padding-left: 10px;
+}
+.padl15{
+    padding-left: 15px;
+}
+
+.marg1{
+    margin:	1px 1px 1px 1px;
+}
+.margl1{
+    margin-left:1px;
+}
+
+.marg2{
+    margin:	2px 2px 2px 2px;
+}
+.margt2{
+    margin-top:2px;
+}
+.margb2{
+    margin-bottom:2px;
+}
+.margbt2{
+    margin:	2px 2px 0px 2px;
+}
+.margbb2{
+    margin:	0px 2px 2px 2px;
+}
+.margv2{
+    margin:	2px 0px 2px 0px;
+}
+.margh2{
+    margin:	0px 2px 0px 2px;
+}
+
+.marg5{
+    margin:	5px 5px 5px 5px;
+}
+.margh5{
+    margin:	0px 5px 0px 5px;
+}
+.margv5{
+    margin:	5px 0px 5px 0px;
+}
+
+.margt1{
+    margin-top:1px;
+}
+.margt5{
+    margin-top:5px;
+}
+.margt10{
+    margin-top:10px;
+}
+.margt15{
+    margin-top:15px;
+}
+
+.margl5{
+    margin-left:5px;
+}
+.margl10{
+    margin-left:10px;
+}
+.margl15{
+    margin-left:15px;
+}
+
+.marg5t{
+    margin-top:5px;
+}
+
+.margb5{
+    margin-bottom:5px;
+}
+.margb10{
+    margin-bottom:10px;
+}
+.margb15{
+    margin-bottom:15px;
+}
+.marga{
+    margin: auto;
+}
+.marg10{
+    margin:	10px 10px 10px 10px;
+}
+.margh10{
+    margin:	0px 10px 0px 10px;
+}
+
+.dfl {
+    float:left;
+}
+.dflicon {
+    float:left;
+    height:20px;
+}
+.dfr {
+    float:right;
+}
+.dfricon {
+    float:right;
+    height:20px;
+}
+.boxdiv {
+    display: block;
+}
+.dpn {
+    display: none;
+}
+.mdiv{
+    background-color:#444444;
+    color:#CCCCCC;
+}
+.mdiv:hover{
+    background-color:#333333;
+}
+
+.smdiv{
+    background-color:#500050;
+    color:#CCCCCC;
+}
+.smdiv:hover{
+    background-color:#333333;
+}
+
+.mcbv1{
+    background-color:#ffccff;
+}
+.dmcbv1{
+    background-color:#ffffff;
+}
+.dmcbv1:hover{
+    background-color:#ffaaff;
+}
+.mcbv2{
+    background-color:#ffaaff;
+}
+.dmcbv2{
+    background-color:#ffaaff;
+}
+.dmcbv2:hover{
+    background-color:#ee88ee;
+}
+.mcbv3{
+    background-color:#ee88ee;
+}
+.dmcbv3{
+    background-color:#ee88ee;
+}
+.dmcbv3:hover{
+    background-color:#cc77cc;
+}
+.mcbv4{
+    background-color:#cc77cc;
+}
+.dmcbv4{
+    background-color:#cc77cc;
+}
+.dmcbv4:hover{
+    background-color:#aa55aa;
+}
+.mcbv5{
+    background-color:#aa55aa;
+}
+.dmcbv5{
+    background-color:#aa55aa;
+}
+.dmcbv5:hover{
+    background-color:#994499;
+}
+.dmcbv5n{
+    background-color:none;
+}
+.dmcbv5n:hover{
+    background-color:#994499;
+}
+.mcbv6{
+    background-color:#994499;
+}
+.dmcbv6{
+    background-color:#994499;
+}
+.dmcbv6:hover{
+    background-color:#772277;
+}
+.mcbv7{
+    background-color:#772277;
+}
+.dmcbv7{
+    background-color:#772277;
+}
+.dmcbv7:hover{
+    background-color:#550055;
+}
+.mcbv8{
+    background-color:#550055;
+}
+.dmcbv8{
+    background-color:#550055;
+}
+.dmcbv8:hover{
+    background-color:#330033;
+}
+.mcbv9{
+    background-color:#330033;
+}
+.dmcbv9{
+    background-color:#330033;
+}
+.dmcbv9:hover{
+    background-color:#110011;
+}
+.mcbv0{
+    background-color:#110011;
+}
+.dmcbv0{
+    background-color:#110011;
+}
+.dmcbv0:hover{
+    background-color:#000000;
+}
+
+.dmcbv90{
+    background-color: none;
+}
+.dmcbv90:hover{
+    background-color:330033;
+}
+
+.mcby{
+    background-color: #ffe45c;
+}
+.mcby1{
+    background-color:#FFF6D8;
+}
+.dmcby1{
+    background-color:#FFF6D8;
+}
+.dmcby1:hover{
+    background-color:#FFF0D4;
+}
+.mcby2{
+    background-color:#FFF0D4;
+}
+.dmcby2{
+    background-color:#FFF0D4;
+}
+.dmcby2:hover{
+    background-color:#FFEDC2;
+}
+.dlmcby2{
+    background-color:#FFFFFF;
+}
+.dlmcby2:hover{
+    background-color:#FFEDC2;
+}
+
+.mcby3{
+    background-color:#FFEDC2;
+}
+.dmcby3{
+    background-color:#FFEDC2;
+}
+.dmcby3:hover{
+    background-color:#FFE2AA;
+}
+.mcby4{
+    background-color:#FFE2AA;
+}
+.dmcby4{
+    background-color:#FFE2AA;
+}
+.dmcby4:hover{
+    background-color:#FFD489;
+}
+.mcby5{
+    background-color:#FFD489;
+}
+.dmcby5{
+    background-color:#FFD489;
+}
+.dmcby5:hover{
+    background-color:#FFC264;
+}
+.mcby6{
+    background-color:#FFC264;
+}
+.dmcby6{
+    background-color:#FFC264;
+}
+.dmcby6:hover{
+    background-color:#FFB84C;
+}
+.mcby7{
+    background-color:#FFB84C;
+}
+.dmcby7{
+    background-color:#FFB84C;
+}
+.dmcby7:hover{
+    background-color:#FCAE0C;
+}
+.mcby8{
+    background-color:#FCAE0C;
+}
+.dmcby8{
+    background-color:#FCAE0C;
+}
+.dmcby8:hover{
+    background-color:#FD9200;
+}
+.mcby9{
+    background-color:#FD9200;
+}
+.dmcby9{
+    background-color:#FD9200;
+}
+.dmcby9:hover{
+    background-color:#EF8105;
+}
+.mcby0{
+    background-color:#EF8105;
+}
+.dmcby0{
+    background-color:#EF8105;
+}
+.dmcby0:hover{
+    background-color:#000000;
+}
+
+.mcbg1{
+    background-color:#ffffff;
+}
+.dmcbg1{
+    background-color:#ffffff;
+}
+.dmcbg1:hover{
+    background-color:#eeeeee;
+}
+.dlmcbg1{
+}
+.dlmcbg1:hover{
+    background-color:#ffffff;
+}
+.ddmcbg1{
+}
+.ddmcbg1:hover{
+    background-color:#000000;
+}
+.mcbg2{
+    background-color:#eeeeee;
+}
+dmcbg2{
+    background-color:#eeeeee;
+}
+.dmcbg2:hover{
+    background-color:#dddddd;
+}
+dlmcbg2{
+    background-color:#eeeeee;
+}
+.dlmcbg2:hover{
+    background-color:#ffffff;
+}
+.mcbg3{
+    background-color:#dddddd;
+}
+.dmcbg3{
+    background-color:#dddddd;
+}
+.dmcbg3:hover{
+    background-color:#cccccc;
+}
+.dlmcbg3{
+    background-color:#dddddd;
+}
+.dlmcbg3:hover{
+    background-color:#eeeeee;
+}
+.mcbg4{
+    background-color:#cccccc;
+}
+.dmcbg4{
+    background-color:#cccccc;
+}
+.dmcbg4:hover{
+    background-color:#bbbbbb;
+}
+.dlmcbg4{
+    background-color:#cccccc;
+}
+.dlmcbg4:hover{
+    background-color:#dddddd;
+}
+.mcbg5{
+    background-color:#bbbbbb;
+}
+.dmcbg5{
+    background-color:#bbbbbb;
+}
+.dmcbg5:hover{
+    background-color:#aaaaaa;
+}
+.dlmcbg5{
+    background-color:#bbbbbb;
+}
+.dlmcbg5:hover{
+    background-color:#cccccc;
+}
+.mcbg6{
+    background-color:#aaaaaa;
+}
+.dmcbg6{
+    background-color:#aaaaaa;
+}
+.dmcbg6:hover{
+    background-color:#999999;
+}
+.dlmcbg6{
+    background-color:#aaaaaa;
+}
+.dlmcbg6:hover{
+    background-color:#bbbbbb;
+}
+.mcbg7{
+    background-color:#999999;
+}
+.dmcbg7{
+    background-color:#999999;
+}
+.dmcbg7:hover{
+    background-color:#666666;
+}
+.dlmcbg7{
+    background-color:#999999;
+}
+.dlmcbg7:hover{
+    background-color:#aaaaaa;
+}
+.mcbg8{
+    background-color:#666666;
+}
+.dmcbg8{
+    background-color:#666666;
+}
+.dmcbg8:hover{
+    background-color:#333333;
+}
+.dlmcbg8{
+    background-color:#666666;
+}
+.dlmcbg8:hover{
+    background-color:#999999;
+}
+.mcbg9{
+    background-color:#333333;
+}
+.dmcbg9{
+    background-color:#333333;
+}
+.dmcbg9:hover{
+    background-color:#000000;
+}
+.dlmcbg9{
+    background-color:#333333;
+}
+.dlmcbg9:hover{
+    background-color:#666666;
+}
+
+
+.mcbg0{
+    background-color:#000000;
+}
+.dmcbg0{
+}
+.dmcbg0:hover{
+    background-color:#000000;
+}
+.dlmcbg0{
+}
+.dlmcbg0:hover{
+    background-color:#ffffff;
+}
+
+dmcbgw{
+    background:rgba(255,255,255,0.5);
+}
+.dmcbgw:hover{
+    background-color:#ffffff;
+}
+.dmcbgn9{
+    background:rgba(0,0,0,0.5);
+}
+.dmcbgn9:hover{
+    background-color:#000000;
+}
+.dmcbrn9{
+    background:rgba(255,0,0,0.3);
+}
+.dmcbrn9:hover{
+    background-color:#C00;
+}
+
+.mcbgreen{
+    background-color:#690;
+}
+.mcbred{
+    background-color:#C00;
+}
+.mcbrtw{
+    background-image: -o-linear-gradient(top, #F66, #FFF);
+    background-image: -moz-linear-gradient(top, #F66, #FFF);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F66), to(#FFF));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=’#F66’, endColorstr=’#FFF′);
+}
+.mcbw_g80 {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    /* width and height can be anything, as long as they're equal */
+}
+.layer_top {
+    z-index: 100;
+}
+.layer_ut {
+    z-index: 90;
+}
+.layer_t5 {
+    z-index: 50;
+}
+.layer_t4 {
+    z-index: 40;
+}
+.layer_t3 {
+    z-index: 30;
+}
+.layer_t2 {
+    z-index: 20;
+}
+.layer_t1 {
+    z-index: 10;
+}
+.layer_n    {
+    z-index: 7;
+}
+.layer_b1    {
+    z-index: 5;
+}
+.layer_b2    {
+    z-index: 4;
+}
+.layer_b3    {
+    z-index: 3;
+}
+.layer_b4    {
+    z-index: 2;
+}
+.layer_b5    {
+    z-index: 1;
+}
+.bott-0    {
+    position: absolute;
+    bottom:  0px;
+}
+.bott-1    {
+    position: absolute;
+    bottom:  -1px;
+}
+.bott-2    {
+    position: absolute;
+    bottom: -2px;
+}
+
+.bordy	{
+    border:1px #FFFF99 solid;
+}
+.bord5	{
+    border:1px #555555 solid;
+}
+.bord0	{
+    border:1px #000000 solid;
+}
+
+.mcbdg	{
+    border:1px #E5E5E5 solid;
+}
+
+.bordc      {
+    border:1px #CCCCCC solid;
+}
+.bordc_tab       {
+    border-left:1px #CCCCCC solid;
+    border-right:1px #CCCCCC solid;
+    border-top:1px #CCCCCC solid;
+}
+
+.bordw      {
+    border:1px #FFFFFF solid;
+}
+.bordw_tab     {
+    border-left:1px #FFFFFF solid;
+    border-right:1px #FFFFFF solid;
+    border-top:1px #FFFFFF solid;
+}
+.bord5	{
+    border:1px #555555 solid;
+}
+.bord9	{
+    border:1px #999999 solid;
+}
+.bord9_l{
+    border-left:1px #999999 solid;
+}
+.bord9_r{
+    border-right:1px #999999 solid;
+}
+.bord9_t{
+    border-top:1px #999999 solid;
+}
+.bord9_b{
+    border-bottom:1px #999999 solid;
+}
+.bordv{
+    border:1px #ee88ee solid;
+}
+.bordy{
+    border:1px #FFEDC2 solid;
+}
+.bordw{
+    border:1px #FFFFFF solid;
+}
+.bordb{
+    border:1px #0000FF solid;
+}
+.bordr{
+    border:1px #FF0000 solid;
+}
+
+.bordc_l{
+    border-left:1px #CCCCCC solid;
+}
+.bordc_r{
+    border-right:1px #CCCCCC solid;
+}
+.bordc_t{
+    border-top:1px #CCCCCC solid;
+}
+.bordc_b{
+    border-bottom:1px #CCCCCC solid;
+}
+
+.boxr5	{
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+.boxr5t	{
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+.boxr5b	{
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+.boxr5l	{
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+}
+.boxr5r	{
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+}
+.boxr5tl{
+    -webkit-border-radius: 5px 0px 0px 0px;
+    -moz-border-radius: 5px 0px 0px 0px;
+    border-radius: 5px 0px 0px 0px;
+}
+.boxr5tr{
+    -webkit-border-radius: 0px 5px 0px 0px;
+    -moz-border-radius: 0px 5px 0px 0px;
+    border-radius: 0px 5px 0px 0px;
+}
+.boxr5br{
+    -webkit-border-radius: 0px 0px 5px 0px;
+    -moz-border-radius: 0px 0px 5px 0px;
+    border-radius: 0px 0px 5px 0px;
+}
+.boxr5bl{
+    -webkit-border-radius: 0px 0px 0px 5px;
+    -moz-border-radius: 0px 0px 0px 5px;
+    border-radius: 0px 0px 0px 5px;
+}
+.boxr10	{
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+}
+.boxr10t{
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+.boxr10b{
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+.boxr11	{
+    -webkit-border-radius: 11px 11px 11px 11px;
+    -moz-border-radius: 11px 11px 11px 11px;
+    border-radius: 11px 11px 11px 11px;
+}
+
+.boxcgreen {
+    background: #17B817;
+    background: -moz-linear-gradient(top, #17B817 0%, #128014 50%, #202C0E 100%);
+    background: -webkit-linear-gradient(top, #17B817 0%, #128014 50%, #202C0E 100%);
+    background: linear-gradient(to bottom, #17B817 0%, #128014 50%, #202C0E 100%);
+}
+.boxsh0up	{
+    -moz-box-shadow:    0   -3px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0   -3px 3px rgba(0,0,0,0.5);
+    box-shadow:         0px -3px 3px rgba(0, 0, 0, 0.5);
+    ;
+}
+
+
+.dboxsh0	{
+    -moz-box-shadow:    0   0px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0   0px 0px rgba(0,0,0,0.5);
+    box-shadow:         0px 0px 0px rgba(0,0,0,0.5);
+}
+.dboxsh0:hover
+{
+    -moz-box-shadow:    0   1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0   1px 3px rgba(0,0,0,0.5);
+    box-shadow:         0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.dboxsh0i {
+    -webkit-box-shadow: inset 0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    inset 0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         inset 0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+}
+
+.dboxsh0i:hover {
+    -webkit-box-shadow: inset 0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    inset 0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         inset 0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+}
+
+.dboxsh0ir  {
+    -webkit-box-shadow: inset -2px 0px 2px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    inset -2px 0px 2px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         inset -2px 0px 2px 0px rgba(50, 50, 50, 0.5);
+}
+
+.boxsh0ib	{
+    -moz-box-shadow:    inset 0px -2px 5px #555555;
+    -webkit-box-shadow: inset 0px -2px 5px #555555;
+    box-shadow:         inset 0px -2px 5px #555555;
+}
+
+.boxshai {
+    -webkit-box-shadow: inset 0px 1px 5px 0px rgba(20, 20, 20, 0.25);
+    -moz-box-shadow:    inset 0px 1px 5px 0px rgba(20, 20, 20, 0.25);
+    box-shadow:         inset 0px 1px 5px 0px rgba(20, 20, 20, 0.25);
+}
+.ib {
+    display: inline-block;
+    margin:0px;
+}
+
+/*!--------------------------------------------------------------------------------------------------masonry----*/
+.pos_a {
+    position: absolute;
+}
+.pos_r {
+    position: relative;
+}
+.pos_f {
+    position: fixed;
+}
+.centered {
+    margin: 0 auto;
+}
+.msr {
+}
+.w010 {
+    width:10px;
+}
+.w015 {
+    width:15px;
+}
+.w020 {
+    width:20px;
+}
+.w025 {
+    width:25px;
+}
+.w030 {
+    width:30px;
+}
+.w035 {
+    width:35px;
+}
+.w040 {
+    width:40px;
+}
+.w045 {
+    width:45px;
+}
+.w050 {
+    width:50px;
+}
+.w055 {
+    width:55px;
+}
+.w060 {
+    width:60px;
+}
+.w065 {
+    width:65px;
+}
+.w070 {
+    width:70px;
+}
+.w075 {
+    width:75px;
+}
+.w080 {
+    width:80px;
+}
+.w090 {
+    width:90px;
+}
+.w1 {
+    width:100px;
+}
+.w120 {
+    width:120px;
+}
+.w130 {
+    width:130px;
+}
+.w140 {
+    width:140px;
+}
+.w150 {
+    width:150px;
+}
+.w160 {
+    width:160px;
+}
+.w170 {
+    width:170px;
+}
+.w180 {
+    width:180px;
+}
+.w190 {
+    width:190px;
+}
+.w2 {
+    width:200px;
+}
+.w250 {
+    width:250px;
+}
+.w3 {
+    width:300px;
+}
+.w350 {
+    width:350px;
+}
+.w4 {
+    width:400px;
+}
+.w450 {
+    width:450px;
+}
+.w5 {
+    width:500px;
+}
+.w550 {
+    width:550px;
+}
+.w6 {
+    width:600px;
+}
+.w650 {
+    width:650px;
+}
+.w7 {
+    width:700px;
+}
+.w750 {
+    width:750px;
+}
+.w8 {
+    width:800px;
+}
+.w850 {
+    width:850px;
+}
+.w9 {
+    width:900px;
+}
+.w950 {
+    width:950px;
+}
+.w10 {
+    width:1000px;
+}
+.w1050 {
+    width:1050px;
+}
+.w11 {
+    width:1100px;
+}
+.w1150 {
+    width:1150px;
+}
+.w12 {
+    width:1200px;
+}
+.w1250 {
+    width:1250px;
+}
+.w13 {
+    width:1300px;
+}
+.w1350 {
+    width:1350px;
+}
+.w14 {
+    width:1400px;
+}
+.w1450 {
+    width:1450px;
+}
+.w15 {
+    width:1500px;
+}
+.w1550 {
+    width:1550px;
+}
+.w100p 	{
+    width:100%;
+}
+.w90p 	{
+    width:90%;
+}
+.w80p 	{
+    width:80%;
+}
+.w70p 	{
+    width:70%;
+}
+.w60p 	{
+    width:60%;
+}
+.w50p 	{
+    width:50%;
+}
+.wauto 	{
+    width:auto;
+}
+
+
+.showat600 {
+    display: none;
+}
+@media screen and (min-width: 800px){
+    .showat600{
+        display: block ;
+    }
+}
+
+@media screen and (min-width: 1419px) and (max-width: 1520px){
+    .w15 {
+        width:1400px;
+    }
+}
+@media screen and (min-width: 1319px) and (max-width: 1420px){
+    .w14 {
+        width:1300px;
+    }
+    .w15 {
+        width:1300px;
+    }
+}
+@media screen and (min-width: 1219px) and (max-width: 1320px){
+    .w13 {
+        width:1200px;
+    }
+    .w14 {
+        width:1200px;
+    }
+    .w15 {
+        width:1200px;
+    }
+}
+@media screen and (min-width: 1119px) and (max-width: 1220px){
+    .w12 {
+        width:1100px;
+    }
+    .w13 {
+        width:1100px;
+    }
+    .w14 {
+        width:1100px;
+    }
+    .w15 {
+        width:1100px;
+    }
+}
+@media screen and (min-width: 1019px) and (max-width: 1120px){
+    .w11 {
+        width:1000px;
+    }
+    .w12 {
+        width:1000px;
+    }
+    .w13 {
+        width:1000px;
+    }
+    .w14 {
+        width:1000px;
+    }
+    .w15 {
+        width:1000px;
+    }
+}
+@media screen and (min-width: 919px) and (max-width: 1020px){
+    .w10 {
+        width:900px;
+    }
+    .w11 {
+        width:900px;
+    }
+    .w12 {
+        width:900px;
+    }
+    .w13 {
+        width:900px;
+    }
+    .w14 {
+        width:900px;
+    }
+    .w15 {
+        width:900px;
+    }
+}
+@media screen and (min-width: 819px) and (max-width: 920px){
+    .w9 {
+        width:800px;
+    }
+    .w10 {
+        width:800px;
+    }
+    .w11 {
+        width:800px;
+    }
+    .w12 {
+        width:800px;
+    }
+    .w13 {
+        width:800px;
+    }
+    .w14 {
+        width:800px;
+    }
+    .w15 {
+        width:800px;
+    }
+}
+@media screen and (min-width: 719px) and (max-width: 820px){
+    .w8 {
+        width:700px;
+    }
+    .w9 {
+        width:700px;
+    }
+    .w10 {
+        width:700px;
+    }
+    .w11 {
+        width:700px;
+    }
+    .w12 {
+        width:700px;
+    }
+    .w13 {
+        width:700px;
+    }
+    .w14 {
+        width:700px;
+    }
+    .w15 {
+        width:700px;
+    }
+}
+@media screen and (min-width: 619px) and (max-width: 720px){
+    .w7 {
+        width:600px;
+    }
+    .w8 {
+        width:600px;
+    }
+    .w9 {
+        width:600px;
+    }
+    .w10 {
+        width:600px;
+    }
+    .w11 {
+        width:600px;
+    }
+    .w12 {
+        width:600px;
+    }
+    .w13 {
+        width:600px;
+    }
+    .w14 {
+        width:600px;
+    }
+    .w15 {
+        width:600px;
+    }
+
+}
+@media screen and (min-width: 519px) and (max-width: 620px){
+    .w6 {
+        width:500px;
+    }
+    .w7 {
+        width:500px;
+    }
+    .w8 {
+        width:500px;
+    }
+    .w9 {
+        width:500px;
+    }
+    .w10 {
+        width:500px;
+    }
+    .w11 {
+        width:500px;
+    }
+    .w12 {
+        width:500px;
+    }
+    .w13 {
+        width:500px;
+    }
+    .w14 {
+        width:500px;
+    }
+    .w15 {
+        width:500px;
+    }
+
+}
+@media screen and (min-width: 419px) and (max-width: 520px){
+    .w5 {
+        width:400px;
+    }
+    .w6 {
+        width:400px;
+    }
+    .w7 {
+        width:400px;
+    }
+    .w8 {
+        width:400px;
+    }
+    .w9 {
+        width:400px;
+    }
+    .w10 {
+        width:400px;
+    }
+    .w11 {
+        width:400px;
+    }
+    .w12 {
+        width:400px;
+    }
+    .w13 {
+        width:400px;
+    }
+    .w14 {
+        width:400px;
+    }
+    .w15 {
+        width:400px;
+    }
+
+}
+@media screen and (min-width: 319px) and (max-width: 420px){
+    .w4 {
+        width:300px;
+    }
+    .w5 {
+        width:300px;
+    }
+    .w6 {
+        width:300px;
+    }
+    .w7 {
+        width:300px;
+    }
+    .w8 {
+        width:300px;
+    }
+    .w9 {
+        width:300px;
+    }
+    .w10 {
+        width:300px;
+    }
+    .w11 {
+        width:300px;
+    }
+    .w12 {
+        width:300px;
+    }
+    .w13 {
+        width:300px;
+    }
+    .w14 {
+        width:300px;
+    }
+    .w15 {
+        width:300px;
+    }
+    .showat500{
+        display: none;
+    }
+}
+@media screen and (max-width: 320px){
+    .w3 {
+        width:200px;
+    }
+    .w4 {
+        width:200px;
+    }
+    .w5 {
+        width:200px;
+    }
+    .w6 {
+        width:200px;
+    }
+    .w7 {
+        width:200px;
+    }
+    .w8 {
+        width:200px;
+    }
+    .w9 {
+        width:200px;
+    }
+    .w10 {
+        width:200px;
+    }
+    .w11 {
+        width:200px;
+    }
+    .w12 {
+        width:200px;
+    }
+    .w13 {
+        width:200px;
+    }
+    .w14 {
+        width:200px;
+    }
+    .w15 {
+        width:200px;
+    }
+
+}
+
+.h010 {
+    height: 10px;
+}
+.h015 {
+    height: 15px;
+}
+.h020 {
+    height: 20px;
+}
+.h025 {
+    height: 25px;
+}
+.h030 {
+    height: 30px;
+}
+.h035 {
+    height: 35px;
+}
+.h040 {
+    height: 40px;
+}
+.h045 {
+    height: 45px;
+}
+.h050 {
+    height: 50px;
+}
+.h055 {
+    height: 55px;
+}
+.h060 {
+    height: 60px;
+}
+.h070 {
+    height: 70px;
+}
+.h080 {
+    height: 80px;
+}
+.h090 {
+    height: 90px;
+}
+.h0100 {
+    height: 100px;
+}
+.h0110 {
+    height: 110px;
+}
+.h0120 {
+    height: 120px;
+}
+/*!-------------------------------------------------THAITONE-----------------------------------------------------*/
+.ttdangchad {
+    background-color:#c9252b;
+    color: #ffffff;
+}
+.ttdangchad:hover {
+    background-color:#ca363b;
+}
+.tthongchad {
+    background-color:#cb6869;
+    color: #ffffff;
+}
+.tthongchad :hover {
+    background-color:#cb797a;
+}
+.ttdindang {
+    background-color:#984d37;
+    color: #ffffff;
+}
+.ttdindang:hover {
+    background-color:#a95d48;
+}
+.ttdindangthat {
+    background-color:#98272b;
+    color: #ffffff;
+}
+.ttdindangthat:hover {
+    background-color:#a9383b;
+}
+.ttdindangtut {
+    background-color:#600013;
+    color: #ffffff;
+}
+.ttdindangtut:hover {
+    background-color:#711124;
+}
+.ttdangtut {
+    background-color:#76202a;
+    color: #ffffff;
+}
+.ttdangtut:hover {
+    background-color:#87313a;
+}
+.tthongdintut {
+    background-color:#96161a;
+    color: #ffffff;
+}
+.tthongdintut:hover {
+    background-color:#a7272a;
+}
+.tthongdin {
+    background-color:#8a4d40;
+    color: #000000;
+}
+.tthongdin:hover {
+    background-color:#9a5d51;
+}
+.tthongsabat {
+    background-color:#df93a4;
+    color: #000000;
+}
+.tthongsabat:hover {
+    background-color:#dfa4a5;
+}
+.ttfhundang {
+    background-color:#ca4142;
+    color: #ffffff;
+}
+.ttfhundang:hover {
+    background-color:#ca5253;
+}
+.ttkampoolud {
+    background-color:#db4028;
+    color: #ffffff;
+}
+.ttkampoolud:hover {
+    background-color:#db5139;
+}
+.ttbuaroi {
+    background-color:#ca6c7b;
+    color: #ffffff;
+}
+.ttbuaroi:hover {
+    background-color:#ca7c8b;
+}
+.tttongsingha {
+    background-color:#db587e;
+    color: #ffffff;
+}
+.tttongsingha:hover {
+    background-color:#db698e;
+}
+.ttdokubon {
+    background-color:#dc6e92;
+    color: #ffffff;
+}
+.ttdokubon:hover {
+    background-color:#dc7ea3;
+}
+
+.ttdangdokkamut {
+    background-color:#d69a9f;
+    color: #000000;
+}
+.ttdangdokkamut:hover {
+    background-color:#d7aaaf;
+}
+.ttlinchi {
+    background-color:#a62b4d;
+    color: #ffffff;
+}
+.ttlinchi:hover {
+    background-color:#a73b5d;
+}
+.ttdangdokchaba {
+    background-color:#e5403f;
+    color: #ffffff;
+}
+.ttdangdokchaba:hover {
+    background-color:#e6514f;
+}
+.ttnankrung {
+    background-color:#db4040;
+    color: #ffffff;
+}
+.ttnankrung:hover {
+    background-color:#db5151;
+}
+.ttdangyo {
+    background-color:#c83d5e;
+    color: #ffffff;
+}
+.ttdangyo:hover {
+    background-color:#c94d6e;
+}
+.ttkampooasura {
+    background-color:#d35525;
+    color: #ffffff;
+}
+.ttkampooasura:hover {
+    background-color:#d46636;
+}
+.ttdokbanyen {
+    background-color:#f17192;
+    color: #ffffff;
+}
+.ttdokbanyen:hover {
+    background-color:#f282a3;
+}
+.ttnammak {
+    background-color:#a03522;
+    color: #ffffff;
+}
+.ttnammak:hover {
+    background-color:#a14633;
+}
+.ttkulap {
+    background-color:#f599a4;
+    color: #000000;
+}
+.ttkulap:hover {
+    background-color:#f6aaa5;
+}
+.ttgasornchompoo {
+    background-color:#da3d7b;
+    color: #ffffff;
+}
+.ttgasornchompoo:hover {
+    background-color:#da4d8b;
+}
+.ttdangmanee {
+    background-color:#c93e3e;
+    color: #ffffff;
+}
+.ttdangmanee:hover {
+    background-color:#ca4e4e;
+}
+.ttnilubon {
+    background-color:#ac85a9;
+    color: #000000;
+}
+.ttnilubon:hover {
+    background-color:#ac96aa;
+}
+.ttsen {
+    background-color:#f15922;
+    color: #ffffff;
+}
+.ttsen:hover {
+    background-color:#f26a33;
+}
+.tthongsen {
+    background-color:#f48466;
+    color: #ffffff;
+}
+.tthongsen:hover {
+    background-color:#f59577;
+}
+
+
+.ttlukpikun {
+    background-color:#dc4d34;
+    color: #ffffff;
+}
+.ttlukpikun:hover {
+    background-color:#dc5d45;
+}
+.ttmeksonthaya {
+    background-color:#f68b33;
+    color: #000000;
+}
+.ttmeksonthaya:hover {
+    background-color:#f79b44;
+}
+.ttkandokkannika {
+    background-color:#d14e2a;
+    color: #ffffff;
+}
+.ttkandokkannika:hover {
+    background-color:#d25e3a;
+}
+.ttphuaknee {
+    background-color:#e0917a;
+    color: #000000;
+}
+.ttphuaknee:hover {
+    background-color:#e1a28a;
+}
+.ttmaksuk {
+    background-color:#f36f32;
+    color: #ffffff;
+}
+.ttmaksuk:hover {
+    background-color:#f47f43;
+}
+.ttdoktaptim {
+    background-color:#dd5835;
+    color: #ffffff;
+}
+.ttdoktaptim:hover {
+    background-color:#dd6946;
+}
+.ttnampueang {
+    background-color:#d77c2a;
+    color: #ffffff;
+}
+.ttnampueang:hover {
+    background-color:#d88c3a;
+}
+.ttmomai {
+    background-color:#e3a378;
+    color: #000000;
+}
+.ttmomai:hover {
+    background-color:#e4a489;
+}
+.ttrongtong {
+    background-color:#e7ba1f;
+    color: #000000;
+}
+.ttrongtong:hover {
+    background-color:#e8ba2f;
+}
+.tthoradan {
+    background-color:#ffde2d;
+    color: #000000;
+}
+.tthoradan:hover {
+    background-color:#ffde3d;
+}
+.ttpleangkaophot {
+    background-color:#f2d490;
+    color: #000000;
+}
+.ttpleangkaophot:hover {
+    background-color:#f3d5a1;
+}
+.ttlueamprapasson {
+    background-color:#cecaa2;
+    color: #000000;
+}
+.ttlueamprapasson:hover {
+    background-color:#cecaa3;
+}
+.ttchan {
+    background-color:#f3d25e;
+    color: #000000;
+}
+.ttchan:hover {
+    background-color:#f4d36e;
+}
+.ttchampa {
+    background-color:#efa31f;
+    color: #000000;
+}
+.ttchampa:hover {
+    background-color:#efa42f;
+}
+
+.ttlueangdin {
+    background-color:#bf9d25;
+    color: #000000;
+}
+.ttlueangdin:hover {
+    background-color:#bfad36;
+}
+.ttdokbuab {
+    background-color:#ffea5e;
+    color: #000000;
+}
+.ttdokbuab:hover {
+    background-color:#ffea6e;
+}
+.ttmaikritsana {
+    background-color:#e5bd82;
+    color: #000000;
+}
+.ttmaikritsana:hover {
+    background-color:#e6bd93;
+}
+.ttlueangpai {
+    background-color:#ead518;
+    color: #000000;
+}
+.ttlueangpai:hover {
+    background-color:#ead629;
+}
+.ttlukkchan {
+    background-color:#f3bf50;
+    color: #000000;
+}
+.ttlukkchan:hover {
+    background-color:#f4bf61;
+}
+.ttmuksuk {
+    background-color:#c7ae7c;
+    color: #000000;
+}
+.ttmuksuk:hover {
+    background-color:#c8ae8c;
+}
+.ttkipueang {
+    background-color:#d09b2b;
+    color: #000000;
+}
+.ttkipueang:hover {
+    background-color:#d1ab3b;
+}
+.ttnuea {
+    background-color:#f2d7b4;
+    color: #000000;
+}
+.ttnuea:hover {
+    background-color:#f3d8b5;
+}
+.ttmatumsuk {
+    background-color:#d8852a;
+    color: #ffffff;
+}
+.ttmatumsuk:hover {
+    background-color:#d9963a;
+}
+.ttkhiaopai {
+    background-color:#6a7840;
+    color: #ffffff;
+}
+.ttkhiaopai:hover {
+    background-color:#7a8951;
+}
+.ttkhiaotangsae {
+    background-color:#4aac87;
+    color: #ffffff;
+}
+.ttkhiaotangsae:hover {
+    background-color:#5aac98;
+}
+.ttkhiaokithong {
+    background-color:#007a6d;
+    color: #ffffff;
+}
+.ttkhiaokithong:hover {
+    background-color:#118a7d;
+}
+.ttkhiaokheema {
+    background-color:#6d6c3e;
+    color: #ffffff;
+}
+.ttkhiaokheema:hover {
+    background-color:#7d7c4e;
+}
+.ttkhiaokab {
+    background-color:#00676f;
+    color: #ffffff;
+}
+.ttkhiaokab:hover {
+    background-color:#11787f;
+}
+
+.ttkhiaokantong {
+    background-color:#249b82;
+    color: #ffffff;
+}
+.ttkhiaokantong:hover {
+    background-color:#35ab93;
+}
+.ttkhiaomuan {
+    background-color:#5a9970;
+    color: #ffffff;
+}
+.ttkhiaomuan:hover {
+    background-color:#6aaa81;
+}
+.ttkhiaokampoo {
+    background-color:#18382a;
+    color: #ffffff;
+}
+.ttkhiaokampoo:hover {
+    background-color:#29493a;
+}
+.ttkhiaodin {
+    background-color:#366742;
+    color: #ffffff;
+}
+.ttkhiaodin:hover {
+    background-color:#477853;
+}
+.ttkhiaokaikrud {
+    background-color:#009690;
+    color: #ffffff;
+}
+.ttkhiaokaikrud:hover {
+    background-color:#11a7a1;
+}
+.tttongon {
+    background-color:#919b4c;
+    color: #ffffff;
+}
+.tttongon:hover {
+    background-color:#a2ab5c;
+}
+.ttkhiaotong {
+    background-color:#20723f;
+    color: #ffffff;
+}
+.ttkhiaotong:hover {
+    background-color:#31834f;
+}
+.ttkhiaokagi {
+    background-color:#008069;
+    color: #ffffff;
+}
+.ttkhiaokagi:hover {
+    background-color:#11917a;
+}
+.ttkhiaobaikae {
+    background-color:#14523a;
+    color: #ffffff;
+}
+.ttkhiaobaikae:hover {
+    background-color:#25634a;
+}
+.ttkanmali {
+    background-color:#6ab396;
+    color: #ffffff;
+}
+.ttkanmali:hover {
+    background-color:#7ab4a7;
+}
+.ttkhiaokaiga {
+    background-color:#94b692;
+    color: #000000;
+}
+.ttkhiaokaiga:hover {
+    background-color:#a5b7a3;
+}
+.ttmaipai {
+    background-color:#288767;
+    color: #ffffff;
+}
+.ttmaipai:hover {
+    background-color:#399878;
+}
+.ttkhiaotua {
+    background-color:#6e953b;
+    color: #ffffff;
+}
+.ttkhiaotua:hover {
+    background-color:#7ea64b;
+}
+.ttkhiaonokkaling {
+    background-color:#89ac6a;
+    color: #ffffff;
+}
+.ttkhiaonokkaling:hover {
+    background-color:#9aac7a;
+}
+
+.ttkhiaotapoon {
+    background-color:#5393a3;
+    color: #ffffff;
+}
+.ttkhiaotapoon:hover {
+    background-color:#64a4a4;
+}
+.ttkhiaokinokkarawek {
+    background-color:#7dbfb7;
+    color: #000000;
+}
+.ttkhiaokinokkarawek:hover {
+    background-color:#8dbfb8;
+}
+.ttmahadthai {
+    background-color:#66734a;
+    color: #ffffff;
+}
+.ttmahadthai:hover {
+    background-color:#77845a;
+}
+.ttkhiaonamlai {
+    background-color:#009690;
+    color: #ffffff;
+}
+.ttkhiaonamlai:hover {
+    background-color:#11a7a1;
+}
+.ttyhaphangon {
+    background-color:#ddd991;
+    color: #000000;
+}
+.ttyhaphangon:hover {
+    background-color:#dddaa2;
+}
+.ttmorakod {
+    background-color:#009058;
+    color: #ffffff;
+}
+.ttmorakod:hover {
+    background-color:#11a169;
+}
+.ttkhiaomaphood {
+    background-color:#bdb632;
+    color: #000000;
+}
+.ttkhiaomaphood:hover {
+    background-color:#bdb743;
+}
+.ttsrok {
+    background-color:#85c299;
+    color: #000000;
+}
+.ttsrok:hover {
+    background-color:#96c3aa;
+}
+.ttkhiaorongka {
+    background-color:#608d57;
+    color: #ffffff;
+}
+.ttkhiaorongka:hover {
+    background-color:#719d68;
+}
+.ttkhram {
+    background-color:#15476e;
+    color: #ffffff;
+}
+.ttkhram:hover {
+    background-color:#26587e;
+}
+.ttkhramfarang {
+    background-color:#0c4da2;
+    color: #ffffff;
+}
+.ttkhramfarang:hover {
+    background-color:#1c5da3;
+}
+.ttmokhram {
+    background-color:#597996;
+    color: #ffffff;
+}
+.ttmokhram:hover {
+    background-color:#6a8aa7;
+}
+.ttmekkhram {
+    background-color:#073050;
+    color: #ffffff;
+}
+.ttmekkhram:hover {
+    background-color:#184161;
+}
+.ttmek {
+    background-color:#94adbe;
+    color: #000000;
+}
+.ttmek:hover {
+    background-color:#a5adbe;
+}
+
+.ttthaegung {
+    background-color:#296169;
+    color: #ffffff;
+}
+.ttthaegung:hover {
+    background-color:#3a727a;
+}
+.ttkhap {
+    background-color:#1b475c;
+    color: #ffffff;
+}
+.ttkhap:hover {
+    background-color:#2b586c;
+}
+.ttkhapdam {
+    background-color:#052838;
+    color: #ffffff;
+}
+.ttkhapdam:hover {
+    background-color:#163949;
+}
+.ttkemkhap {
+    background-color:#005465;
+    color: #ffffff;
+}
+.ttkemkhap:hover {
+    background-color:#116576;
+}
+.ttnamlai {
+    background-color:#5cafbe;
+    color: #ffffff;
+}
+.ttnamlai:hover {
+    background-color:#6cafbe;
+}
+.ttkoncornangnokyung {
+    background-color:#008d9b;
+    color: #ffffff;
+}
+.ttkoncornangnokyung:hover {
+    background-color:#119dab;
+}
+.ttkelahum {
+    background-color:#2b0239;
+    color: #ffffff;
+}
+.ttkelahum:hover {
+    background-color:#3b134a;
+}
+.tttamaw {
+    background-color:#5194ac;
+    color: #ffffff;
+}
+.tttamaw:hover {
+    background-color:#62a5ac;
+}
+.ttkromatha {
+    background-color:#1b2c56;
+    color: #ffffff;
+}
+.ttkromatha:hover {
+    background-color:#2b3c67;
+}
+.ttnamngennokpilap {
+    background-color:#0e6a7c;
+    color: #ffffff;
+}
+.ttnamngennokpilap:hover {
+    background-color:#1e7a8c;
+}
+.ttfa {
+    background-color:#3677ae;
+    color: #ffffff;
+}
+.ttfa:hover {
+    background-color:#4788ae;
+}
+.ttmuangchad {
+    background-color:#a5556b;
+    color: #ffffff;
+}
+.ttmuangchad:hover {
+    background-color:#a6667b;
+}
+.ttmuangkhram {
+    background-color:#3a2e54;
+    color: #ffffff;
+}
+.ttmuangkhram:hover {
+    background-color:#4a3e65;
+}
+.ttmuangmedmaprang {
+    background-color:#712d7d;
+    color: #ffffff;
+}
+.ttmuangmedmaprang:hover {
+    background-color:#823d8d;
+}
+
+.ttmuangdoktabeak {
+    background-color:#b47aa7;
+    color: #ffffff;
+}
+.ttmuangdoktabeak:hover {
+    background-color:#b58aa8;
+}
+.ttmuangdokpaktop {
+    background-color:#7870a6;
+    color: #ffffff;
+}
+.ttmuangdokpaktop:hover {
+    background-color:#8981a7;
+}
+.ttmuangkhiao {
+    background-color:#7f626d;
+    color: #ffffff;
+}
+.ttmuangkhiao:hover {
+    background-color:#8f737d;
+}
+.ttmuangkae {
+    background-color:#432c64;
+    color: #ffffff;
+}
+.ttmuangkae:hover {
+    background-color:#543c75;
+}
+.ttdokunchan {
+    background-color:#6a5096;
+    color: #ffffff;
+}
+.ttdokunchan:hover {
+    background-color:#7a61a7;
+}
+.ttpueak {
+    background-color:#bd9dc2;
+    color: #000000;
+}
+.ttpueak:hover {
+    background-color:#bdadc3;
+}
+.ttmuangtong {
+    background-color:#9f4b57;
+    color: #ffffff;
+}
+.ttmuangtong:hover {
+    background-color:#af5b68;
+}
+.ttplueagmankut {
+    background-color:#6f2c4f;
+    color: #ffffff;
+}
+.ttplueagmankut:hover {
+    background-color:#7f3c5f;
+}
+
+.ttpueangangkap {
+    background-color:#886ba5;
+    color: #ffffff;
+}
+.ttpueangangkap:hover {
+    background-color:#997ba6;
+}
+.ttlukwa {
+    background-color:#410843;
+    color: #ffffff;
+}
+.ttlukwa:hover {
+    background-color:#521954;
+}
+.ttnamtan {
+    background-color:#7c4b36;
+    color: #ffffff;
+}
+.ttnamtan:hover {
+    background-color:#8c5b47;
+}
+.ttnamtanmai {
+    background-color:#532f1d;
+    color: #ffffff;
+}
+.ttnamtanmai:hover {
+    background-color:#643f2d;
+}
+.ttkapi {
+    background-color:#a5515b;
+    color: #ffffff;
+}
+.ttkapi:hover {
+    background-color:#a6626b;
+}
+.ttfhad {
+    background-color:#6f2f29;
+    color: #ffffff;
+}
+.ttfhad:hover {
+    background-color:#7f3f3a;
+}
+
+.ttfang {
+    background-color:#daba8a;
+    color: #000000;
+}
+.ttfang:hover {
+    background-color:#daba9a;
+}
+.ttdin {
+    background-color:#e3a378;
+    color: #000000;
+}
+.ttdin:hover {
+    background-color:#e4a489;
+}
+.ttit {
+    background-color:#c2631b;
+    color: #ffffff;
+}
+.ttit:hover {
+    background-color:#c3742b;
+}
+.ttsak {
+    background-color:#b95933;
+    color: #ffffff;
+}
+.ttsak:hover {
+    background-color:#ba6a44;
+}
+.ttkruk {
+    background-color:#8b592b;
+    color: #ffffff;
+}
+.ttkruk:hover {
+    background-color:#9b6a3b;
+}
+.ttkaki {
+    background-color:#a18f78;
+    color: #000000;
+}
+.ttkaki:hover {
+    background-color:#a29f89;
+}
+.ttthong {
+    background-color:#d1b555;
+    color: #000000;
+}
+.ttthong:hover {
+    background-color:#d2b666;
+}
+.ttthongkam {
+    background-color:#be9625;
+    color: #000000;
+}
+.ttthongkam:hover {
+    background-color:#bea736;
+}
+.ttthongchomphunuch {
+    background-color:#dba73d;
+    color: #000000;
+}
+.ttthongchomphunuch:hover {
+    background-color:#dba84d;
+}
+.ttthongdokbuab {
+    background-color:#ddc155;
+    color: #000000;
+}
+.ttthongdokbuab:hover {
+    background-color:#ddc266;
+}
+.ttlueangpeangthong {
+    background-color:#c0ac23;
+    color: #000000;
+}
+.ttlueangpeangthong:hover {
+    background-color:#c1ac34;
+}
+.ttthongdang {
+    background-color:#a0574d;
+    color: #ffffff;
+}
+.ttthongdang:hover {
+    background-color:#a1685d;
+}
+.ttthongdangsuk {
+    background-color:#d79072;
+    color: #ffffff;
+}
+.ttthongdangsuk:hover {
+    background-color:#d8a183;
+}
+.ttnak {
+    background-color:#cb7471;
+    color: #ffffff;
+}
+.ttnak:hover {
+    background-color:#cb8582;
+}
+
+.ttlueamphai {
+    background-color:#e3c0ab;
+    color: #000000;
+}
+.ttlueamphai:hover {
+    background-color:#e4c1ab;
+}
+.ttlueamlueang {
+    background-color:#e7d994;
+    color: #000000;
+}
+.ttlueamlueang:hover {
+    background-color:#e8daa5;
+}
+.ttngen {
+    background-color:#bdc3c1;
+    color: #000000;
+}
+.ttngen:hover {
+    background-color:#bdc4c2;
+}
+.ttkaoponpet {
+    background-color:#e4dcc1;
+    color: #000000;
+}
+.ttkaoponpet:hover {
+    background-color:#e5dcc2;
+}
+.ttlek {
+    background-color:#bdbdb8;
+    color: #000000;
+}
+.ttlek:hover {
+    background-color:#bdbdb9;
+}
+.ttleklai {
+    background-color:#2b251c;
+    color: #ffffff;
+}
+.ttleklai:hover {
+    background-color:#3b362c;
+}
+.ttsamritphon {
+    background-color:#62411d;
+    color: #ffffff;
+}
+.ttsamritphon:hover {
+    background-color:#73522d;
+}
+.ttsamritchok {
+    background-color:#5d4709;
+    color: #ffffff;
+}
+.ttsamritchok:hover {
+    background-color:#6d581a;
+}
+.ttsamritsak {
+    background-color:#a2966d;
+    color: #ffffff;
+}
+.ttsamritsak:hover {
+    background-color:#a3a77d;
+}
+.ttsamritkhun {
+    background-color:#1a5e5b;
+    color: #ffffff;
+}
+.ttsamritkhun:hover {
+    background-color:#2a6e6b;
+}
+.ttsamritdat {
+    background-color:#454841;
+    color: #ffffff;
+}
+.ttsamritdat:hover {
+    background-color:#565952;
+}
+.ttdamkhamao {
+    background-color:#000000;
+    color: #ffffff;
+}
+.ttdamkhamao:hover {
+    background-color:#111111;
+}
+.ttdammuek {
+    background-color:#5b5c61;
+    color: #ffffff;
+}
+.ttdammuek:hover {
+    background-color:#6b6c72;
+}
+.ttmomuek {
+    background-color:#778a83;
+    color: #ffffff;
+}
+.ttmomuek:hover {
+    background-color:#889a94;
+}
+
+.ttmuekchin {
+    background-color:#373d41;
+    color: #ffffff;
+}
+.ttmuekchin:hover {
+    background-color:#484d52;
+}
+.ttmanrak {
+    background-color:#2c1d19;
+    color: #ffffff;
+}
+.ttmanrak:hover {
+    background-color:#3c2d2a;
+}
+.ttsamrit {
+    background-color:#595044;
+    color: #ffffff;
+}
+.ttsamrit:hover {
+    background-color:#6a6155;
+}
+.ttpeekka {
+    background-color:#364741;
+    color: #ffffff;
+}
+.ttpeekka:hover {
+    background-color:#475852;
+}
+.ttkhamaoyang {
+    background-color:#233741;
+    color: #ffffff;
+}
+.ttkhamaoyang:hover {
+    background-color:#344852;
+}
+.tttao {
+    background-color:#808785;
+    color: #ffffff;
+}
+.tttao:hover {
+    background-color:#919896;
+}
+.ttlueangtao {
+    background-color:#b3a690;
+    color: #000000;
+}
+.ttlueangtao:hover {
+    background-color:#b4a7a1;
+}
+.ttswad {
+    background-color:#6a6e79;
+    color: #ffffff;
+}
+.ttswad:hover {
+    background-color:#7a7e8a;
+}
+.ttkhionil {
+    background-color:#002b35;
+    color: #ffffff;
+}
+.ttkhionil:hover {
+    background-color:#113b46;
+}
+.ttnilkan {
+    background-color:#000a0d;
+    color: #ffffff;
+}
+.ttnilkan:hover {
+    background-color:#111a1d;
+}
+.ttdaklao {
+    background-color:#b3b3ba;
+    color: #000000;
+}
+.ttdaklao:hover {
+    background-color:#b4b4ba;
+}
+.ttlukhan {
+    background-color:#6c6273;
+    color: #ffffff;
+}
+.ttlukhan:hover {
+    background-color:#7c7384;
+}
+.ttkwanpheng {
+    background-color:#9e9082;
+    color: #000000;
+}
+.ttkwanpheng:hover {
+    background-color:#aea193;
+}
+.ttpoon {
+    background-color:#a0a49f;
+    color: #000000;
+}
+.ttpoon:hover {
+    background-color:#a1a5af;
+}
+
+.tttoakhiao {
+    background-color:#93a8a3;
+    color: #000000;
+}
+.tttoakhiao:hover {
+    background-color:#a4a9a4;
+}
+.ttkhaophong {
+    background-color:#f1ede2;
+    color: #000000;
+}
+.ttkhaophong:hover {
+    background-color:#f2ede3;
+}
+.ttkhaokabang {
+    background-color:#d1d0d0;
+    color: #000000;
+}
+.ttkhaokabang:hover {
+    background-color:#d2d1d1;
+}
+.ttfalap {
+    background-color:#efdae1;
+    color: #000000;
+}
+.ttfalap:hover {
+    background-color:#efdae2;
+}
+.ttkwaaipueag {
+    background-color:#efc4b3;
+    color: #000000;
+}
+.ttkwaaipueag:hover {
+    background-color:#efc5b4;
+}
+.ttchangpueag {
+    background-color:#e19a85;
+    color: #000000;
+}
+.ttchangpueag:hover {
+    background-color:#e2aa96;
+}
+.ttkeabbua {
+    background-color:#edbcc6;
+    color: #000000;
+}
+.ttkeabbua:hover {
+    background-color:#edbcc7;
+}
+.ttnuantao {
+    background-color:#b4ae9b;
+    color: #000000;
+}
+.ttnuantao:hover {
+    background-color:#b5aeab;
+}
+.ttnuan {
+    background-color:#dbcc91;
+    color: #000000;
+}
+.ttnuan:hover {
+    background-color:#dbcca2;
+}
+.ttnuanchan {
+    background-color:#dcc26b;
+    color: #000000;
+}
+.ttnuanchan:hover {
+    background-color:#dcc37b;
+}
+.ttsang {
+    background-color:#fff1d0;
+    color: #000000;
+}
+.ttsang:hover {
+    background-color:#fff2d1;
+}
+.ttkhaokhap {
+    background-color:#c2d6cf;
+    color: #000000;
+}
+.ttkhaokhap:hover {
+    background-color:#c3d7cf;
+}
+.ttngachang {
+    background-color:#fffddf;
+    color: #000000;
+}
+.ttngachang:hover {
+    background-color:#fffddf;
+}
+.ttmok {
+    background-color:#dbceba;
+    color: #000000;
+}
+.ttmok:hover {
+    background-color:#dbceba;
+}
+
+.ttdungchan {
+    background-color:#F4F6FD;
+    color: #000000;
+}
+.ttpuymek {
+    background-color:#F4FAFC;
+    color: #000000;
+}
+.ttkradad {
+    background-color:#F9FBFF;
+    color: #000000;
+}
+.ttkularbkraw {
+    background-color:#F6FCFA;
+    color: #000000;
+}
+
+.tthima {
+    background-color:#F3F6FB;
+    color: #000000;
+}
+.ttkraew {
+    background-color:#F3FAFD;
+    color: #000000;
+}
+.ttnamnom {
+    background-color:#FFFEF7;
+    color: #000000;
+}
+.ttpleakhoy {
+    background-color:#FAF9F5;
+    color: #000000;
+}
+
+.ttsainam {
+    background-color:#C6CBCF;
+    color: #000000;
+}
+.ttmedsray {
+    background-color:#ECE9E4;
+    color: #000000;
+}
+.ttkwan {
+    background-color:#F5F5F5;
+    color: #000000;
+}
+.tthobgkaw {
+    background-color:#FCFDFF;
+    color: #000000;
+}
+
+/*!-------------------------------------------------text thai tone-----------------------------------------------------*/
+.tcttdangchad {
+    color:#c9252b;
+}
+.tctthongchad {
+    color:#cb6869;
+}
+.tcttdindang {
+    color:#984d37;
+}
+.tcttdindangthat {
+    color:#98272b;
+}
+.tcttdindangtut {
+    color:#600013;
+}
+.tcttdangtut {
+    color:#76202a;
+}
+.tctthongdintut {
+    color:#96161a;
+}
+.tctthongdin {
+    color:#8a4d40;
+}
+.tctthongsabat {
+    color:#df93a4;
+}
+.tcttfhundang {
+    color:#ca4142;
+}
+.tcttkampoolud {
+    color:#db4028;
+}
+.tcttbuaroi {
+    color:#ca6c7b;
+}
+.tctttongsingha {
+    color:#db587e;
+}
+.tcttdokubon {
+    color:#dc6e92;
+}
+
+.tcttdangdokkamut {
+    color:#d69a9f;
+}
+.tcttlinchi {
+    color:#a62b4d;
+}
+.tcttdangdokchaba {
+    color:#e5403f;
+}
+.tcttnankrung {
+    color:#db4040;
+}
+.tcttdangyo {
+    color:#c83d5e;
+}
+.tcttkampooasura {
+    color:#d35525;
+}
+.tcttdokbanyen {
+    color:#f17192;
+}
+.tcttnammak {
+    color:#a03522;
+}
+.tcttkulap {
+    color:#f599a4;
+}
+.tcttgasornchompoo {
+    color:#da3d7b;
+}
+.tcttdangmanee {
+    color:#c93e3e;
+}
+.tcttnilubon {
+    color:#ac85a9;
+}
+.tcttsen {
+    color:#f15922;
+}
+.tctthongsen {
+    color:#f48466;
+}
+
+
+.tcttlukpikun {
+    color:#dc4d34;
+}
+.tcttmeksonthaya {
+    color:#f68b33;
+}
+.tcttkandokkannika {
+    color:#d14e2a;
+}
+.tcttphuaknee {
+    color:#e0917a;
+}
+.tcttmaksuk {
+    color:#f36f32;
+}
+.tcttdoktaptim {
+    color:#dd5835;
+}
+.tcttnampueang {
+    color:#d77c2a;
+}
+.tcttmomai {
+    color:#e3a378;
+}
+.tcttrongtong {
+    color:#e7ba1f;
+}
+.tctthoradan {
+    color:#ffde2d;
+}
+.tcttpleangkaophot {
+    color:#f2d490;
+}
+.tcttlueamprapasson {
+    color:#cecaa2;
+}
+.tcttchan {
+    color:#f3d25e;
+}
+.tcttchampa {
+    color:#efa31f;
+}
+
+.tcttlueangdin {
+    color:#bf9d25;
+}
+.tcttdokbuab {
+    color:#ffea5e;
+}
+.tcttmaikritsana {
+    color:#e5bd82;
+}
+.tcttlueangpai {
+    color:#ead518;
+}
+.tcttlukkchan {
+    color:#f3bf50;
+}
+.tcttmuksuk {
+    color:#c7ae7c;
+}
+.tcttkipueang {
+    color:#d09b2b;
+}
+.tcttnuea {
+    color:#f2d7b4;
+}
+.tcttmatumsuk {
+    color:#d8852a;
+}
+.tcttkhiaopai {
+    color:#6a7840;
+}
+.tcttkhiaotangsae {
+    color:#4aac87;
+}
+.tcttkhiaokithong {
+    color:#007a6d;
+}
+.tcttkhiaokheema {
+    color:#6d6c3e;
+}
+.tcttkhiaokab {
+    color:#00676f;
+}
+
+.tcttkhiaokantong {
+    color:#249b82;
+}
+.tcttkhiaomuan {
+    color:#5a9970;
+}
+.tcttkhiaokampoo {
+    color:#18382a;
+}
+.tcttkhiaodin {
+    color:#366742;
+}
+.tcttkhiaokaikrud {
+    color:#009690;
+}
+.tctttongon {
+    color:#919b4c;
+}
+.tcttkhiaotong {
+    color:#20723f;
+}
+.tcttkhiaokagi {
+    color:#008069;
+}
+.tcttkhiaobaikae {
+    color:#14523a;
+}
+.tcttkanmali {
+    color:#6ab396;
+}
+.tcttkhiaokaiga {
+    color:#94b692;
+}
+.tcttmaipai {
+    color:#288767;
+}
+.tcttkhiaotua {
+    color:#6e953b;
+}
+.tcttkhiaonokkaling {
+    color:#89ac6a;
+}
+/*!-------------------------------------------------PSD-----------------------------------------------------*/
+.tcttkhiaotapoon {
+    color:#5393a3;
+}
+.tcttkhiaokinokkarawek {
+    color:#7dbfb7;
+}
+.tcttmahadthai {
+    color:#66734a;
+}
+.tcttkhiaonamlai {
+    color:#009690;
+}
+.tcttyhaphangon {
+    color:#ddd991;
+}
+.tcttmorakod {
+    color:#009058;
+}
+.tcttkhiaomaphood {
+    color:#bdb632;
+}
+.tcttsrok {
+    color:#85c299;
+}
+.tcttkhiaorongka {
+    color:#608d57;
+}
+.tcttkhram {
+    color:#15476e;
+}
+.tcttkhramfarang {
+    color:#0c4da2;
+}
+.tcttmokhram {
+    color:#597996;
+}
+.tcttmekkhram {
+    color:#073050;
+}
+.tcttmek {
+    color:#94adbe;
+}
+
+.tcttthaegung {
+    color:#296169;
+}
+.tcttkhap {
+    color:#1b475c;
+}
+.tcttkhapdam {
+    color:#052838;
+}
+.tcttkemkhap {
+    color:#005465;
+}
+.tcttnamlai {
+    color:#5cafbe;
+}
+.tcttkoncornangnokyung {
+    color:#008d9b;
+}
+.tcttkelahum {
+    color:#2b0239;
+}
+.tctttamaw {
+    color:#5194ac;
+}
+.tcttkromatha {
+    color:#1b2c56;
+}
+.tcttnamngennokpilap {
+    color:#0e6a7c;
+}
+.tcttfa {
+    color:#3677ae;
+}
+.tcttmuangchad {
+    color:#a5556b;
+}
+.tcttmuangkhram {
+    color:#3a2e54;
+}
+.tcttmuangmedmaprang {
+    color:#712d7d;
+}
+
+.tcttmuangdoktabeak {
+    color:#b47aa7;
+}
+.tcttmuangdokpaktop {
+    color:#7870a6;
+}
+.tcttmuangkhiao {
+    color:#7f626d;
+}
+.tcttmuangkae {
+    color:#432c64;
+}
+.tcttdokunchan {
+    color:#6a5096;
+}
+.tcttpueak {
+    color:#bd9dc2;
+}
+.tcttmuangtong {
+    color:#9f4b57;
+}
+.tcttplueagmankut {
+    color:#6f2c4f;
+}
+.tcttpueangangkap {
+    color:#886ba5;
+}
+.tcttlukwa {
+    color:#410843;
+}
+.tcttnamtan {
+    color:#7c4b36;
+}
+.tcttnamtanmai {
+    color:#532f1d;
+}
+.tcttkapi {
+    color:#a5515b;
+}
+.tcttfhad {
+    color:#6f2f29;
+}
+
+.tcttfang {
+    color:#daba8a;
+}
+.tcttdin {
+    color:#e3a378;
+}
+.tcttit {
+    color:#c2631b;
+}
+.tcttsak {
+    color:#b95933;
+}
+.tcttkruk {
+    color:#8b592b;
+}
+.tcttkaki {
+    color:#a18f78;
+}
+.tcttthong {
+    color:#d1b555;
+}
+.tcttthongkam {
+    color:#be9625;
+}
+.tcttthongchomphunuch {
+    color:#dba73d;
+}
+.tcttthongdokbuab {
+    color:#ddc155;
+}
+.tcttlueangpeangthong {
+    color:#c0ac23;
+}
+.tcttthongdang {
+    color:#a0574d;
+}
+.tcttthongdangsuk {
+    color:#d79072;
+}
+.tcttnak {
+    color:#cb7471;
+}
+
+.tcttlueamphai {
+    color:#e3c0ab;
+}
+.tcttlueamlueang {
+    color:#e7d994;
+}
+.tcttngen {
+    color:#bdc3c1;
+}
+.tcttkaoponpet {
+    color:#e4dcc1;
+}
+.tcttlek {
+    color:#bdbdb8;
+}
+.tcttleklai {
+    color:#2b251c;
+}
+.tcttsamritphon {
+    color:#62411d;
+}
+.tcttsamritchok {
+    color:#5d4709;
+}
+.tcttsamritsak {
+    color:#a2966d;
+}
+.tcttsamritkhun {
+    color:#1a5e5b;
+}
+.tcttsamritdat {
+    color:#454841;
+}
+.tcttdamkhamao {
+    color:#000000;
+}
+.tcttdammuek {
+    color:#5b5c61;
+}
+.tcttmomuek {
+    color:#778a83;
+}
+
+.tcttmuekchin {
+    color:#373d41;
+}
+.tcttmanrak {
+    color:#2c1d19;
+}
+.tcttsamrit {
+    color:#595044;
+}
+.tcttpeekka {
+    color:#364741;
+}
+.tcttkhamaoyang {
+    color:#233741;
+}
+.tctttao {
+    color:#808785;
+}
+.tcttlueangtao {
+    color:#b3a690;
+}
+.tcttswad {
+    color:#6a6e79;
+}
+.tcttkhionil {
+    color:#002b35;
+}
+.tcttnilkan {
+    color:#000a0d;
+}
+.tcttdaklao {
+    color:#b3b3ba;
+}
+.tcttlukhan {
+    color:#6c6273;
+}
+.tcttkwanpheng {
+    color:#9e9082;
+}
+.tcttpoon {
+    color:#a0a49f;
+}
+
+.tctttoakhiao {
+    color:#93a8a3;
+}
+.tcttkhaophong {
+    color:#f1ede2;
+}
+.tcttkhaokabang {
+    color:#d1d0d0;
+}
+.tcttfalap {
+    color:#efdae1;
+}
+.tcttkwaaipueag {
+    color:#efc4b3;
+}
+.tcttchangpueag {
+    color:#e19a85;
+}
+.tcttkeabbua {
+    color:#edbcc6;
+}
+.tcttnuantao {
+    color:#b4ae9b;
+}
+.tcttnuan {
+    color:#dbcc91;
+}
+.tcttnuanchan {
+    color:#dcc26b;
+}
+.tcttsang {
+    color:#fff1d0;
+}
+.tcttkhaokhap {
+    color:#c2d6cf;
+}
+.tcttngachang {
+    color:#fffddf;
+}
+.tcttmok {
+    color:#dbceba;
+}
+/*!-------------------------------------------------PSD-----------------------------------------------------*/
+
+.grayscalepic {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+.grayscalepic80 {
+    -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(80%);
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 100,
+        'GRAD' 0,
+        'opsz' 24
+}
