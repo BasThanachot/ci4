@@ -7,6 +7,7 @@ class Procurement_admin extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('Procurement_model');
+        $this->load->model('Procurement_item_log_model');
     }
 
     /** หน้าแอดมินหลัก - แสดง tree จัดการทุกระดับในหน้าเดียว */
@@ -132,15 +133,54 @@ class Procurement_admin extends MY_Controller {
             return $this->_json(['status' => 'error', 'message' => 'ข้อมูลไม่ครบ']);
         }
 
+        $editor_id       = $this->session->userdata('user_id');
+        $editor_username = $this->session->userdata('username');
+        $old_item        = $id ? $this->Procurement_model->get_item($id) : null;
+
+        if ($old_item) {
+            $this->Procurement_item_log_model->log_changes($old_item, $old_item, $data, $editor_id, $editor_username);
+        }
+
         $id = $this->Procurement_model->save_item($id, $data);
+
+        if (!$old_item) {
+            $this->Procurement_item_log_model->log_create($id, $data['title'], $editor_id, $editor_username);
+        }
+
         $this->_json(['status' => 'ok', 'id' => $id]);
     }
 
     public function item_delete($id)
     {
         $this->check_role('admin');
+        $item = $this->Procurement_model->get_item($id);
+        if ($item) {
+            $this->Procurement_item_log_model->log_delete(
+                $item->id,
+                $item->title,
+                $this->session->userdata('user_id'),
+                $this->session->userdata('username')
+            );
+        }
         $this->Procurement_model->delete_item($id);
         $this->_json(['status' => 'ok']);
+    }
+
+    /** ประวัติการแก้ไขของรายการเอกสารหนึ่งรายการ */
+    public function item_history($id)
+    {
+        $this->check_role('admin');
+        $item = $this->Procurement_model->get_item($id);
+        if (!$item) { show_404(); return; }
+
+        $data                = $this->session_data();
+        $data['page_title']  = 'ประวัติการแก้ไข — ' . $item->title;
+        $data['active_menu'] = 'procurement_admin';
+        $data['item']        = $item;
+        $data['logs']        = $this->Procurement_item_log_model->get_by_item($id);
+        $data['log_model']   = $this->Procurement_item_log_model;
+        $data['content']     = $this->load->view('procurement/item_history', $data, TRUE);
+        $this->load->view('layout', $data);
     }
 
     private function _json($payload)

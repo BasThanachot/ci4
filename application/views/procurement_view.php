@@ -121,6 +121,7 @@
 
 <script>
 let data = {}, sel = [null, null, null];
+const DOWNLOAD_BASE = '<?= base_url('procurement/download') ?>';
 
 function countItems(cat) {
   let n = 0;
@@ -214,7 +215,10 @@ function renderItems(items) {
     el.innerHTML = `
       <div class="item-header">
         <div class="item-title">${escapeHtml(it.title)}</div>
-        <button class="btn-copy" type="button"><i class="ti ti-copy"></i><span>คัดลอก</span></button>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <button class="btn-copy" type="button"><i class="ti ti-copy"></i><span>คัดลอก</span></button>
+          ${it.id ? `<a class="btn-copy" href="${DOWNLOAD_BASE}/${it.id}"><i class="ti ti-file-type-doc"></i><span>Word</span></a>` : ''}
+        </div>
       </div>
       <div class="item-content">${escapeHtml(it.content || '')}</div>
       ${meta ? `<div class="item-meta" style="margin-top:6px">${meta}</div>` : ''}

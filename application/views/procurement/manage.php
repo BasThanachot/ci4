@@ -25,8 +25,9 @@ const API = {
   sub1Del:  '<?= base_url('procurement_admin/sub1_delete') ?>',
   sub2Save: '<?= base_url('procurement_admin/sub2_save') ?>',
   sub2Del:  '<?= base_url('procurement_admin/sub2_delete') ?>',
-  itemSave: '<?= base_url('procurement_admin/item_save') ?>',
-  itemDel:  '<?= base_url('procurement_admin/item_delete') ?>',
+  itemSave:    '<?= base_url('procurement_admin/item_save') ?>',
+  itemDel:     '<?= base_url('procurement_admin/item_delete') ?>',
+  itemHistory: '<?= base_url('procurement_admin/item_history') ?>',
 };
 
 async function postForm(url, fields) {
@@ -159,6 +160,7 @@ function itemRow(item, sub2Id) {
     <div class="flex gap-2 mb-1">
       <input class="border border-gray-200 rounded px-2 py-1 text-xs flex-1" placeholder="ชื่อรายการเอกสาร"
              value="${item.title || ''}" data-field="title">
+      ${item.id ? `<a class="text-xs text-gray-500 hover:text-gray-700" href="${API.itemHistory}/${item.id}"><i class="fa-solid fa-clock-rotate-left mr-1"></i>ประวัติ</a>` : ''}
       <button class="text-xs text-red-500 hover:text-red-700" data-del-item>ลบ</button>
     </div>
     <textarea class="border border-gray-200 rounded px-2 py-1 text-xs w-full" rows="3"

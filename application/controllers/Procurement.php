@@ -50,4 +50,36 @@ class Procurement extends MY_Controller {
              ->set_content_type('application/json')
              ->set_output(json_encode($out, JSON_UNESCAPED_UNICODE));
     }
+
+    /**
+     * ดาวน์โหลดรายการเอกสารเป็นไฟล์ Word (.docx)
+     * URL: procurement/download/<item_id>
+     */
+    public function download($id)
+    {
+        $this->check_login();
+
+        $this->load->model('Procurement_model');
+        $item = $this->Procurement_model->get_item($id);
+        if (!$item) { show_404(); return; }
+
+        require_once APPPATH . 'libraries/Simple_docx.php';
+        $bytes = Simple_docx::build($item->title, $item->content);
+
+        $filename     = $this->_safe_filename($item->title) . '.docx';
+        $filenameUtf8 = rawurlencode($filename);
+
+        $this->output
+             ->set_content_type('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+             ->set_header('Content-Disposition: attachment; filename="' . $filename . '"; filename*=UTF-8\'\'' . $filenameUtf8)
+             ->set_header('Content-Length: ' . strlen($bytes))
+             ->set_output($bytes);
+    }
+
+    private function _safe_filename($title)
+    {
+        $name = preg_replace('/[\\\\\/:*?"<>|]/', '_', (string) $title);
+        $name = trim($name);
+        return $name !== '' ? $name : 'document';
+    }
 }

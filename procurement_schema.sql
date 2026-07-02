@@ -46,3 +46,18 @@ CREATE TABLE IF NOT EXISTS procurement_items (
     updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX (sub2_id)
 );
+
+-- ประวัติการแก้ไขรายการเอกสาร (รูปแบบเดียวกับ user_logs ที่มีอยู่แล้วในระบบ)
+CREATE TABLE IF NOT EXISTS procurement_item_logs (
+    id                    INT AUTO_INCREMENT PRIMARY KEY,
+    item_id               INT NOT NULL,
+    target_title          VARCHAR(255) NOT NULL,
+    changed_by_id         INT DEFAULT NULL,
+    changed_by_username   VARCHAR(50) DEFAULT NULL,
+    field                 VARCHAR(50) NOT NULL,
+    old_value             TEXT DEFAULT NULL,
+    new_value             TEXT DEFAULT NULL,
+    created_at            TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    INDEX (item_id),
+    INDEX (created_at)
+);
