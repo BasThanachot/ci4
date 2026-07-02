@@ -15,8 +15,8 @@ class Procurement_admin extends MY_Controller {
         $this->check_role('admin');
 
         $data                = $this->session_data();
-        $data['page_title']  = 'เอกสารจัดซื้อ-จัดจ้าง';
-        $data['active_menu'] = 'procurement';
+        $data['page_title']  = 'จัดการเอกสารจัดซื้อ-จัดจ้าง';
+        $data['active_menu'] = 'procurement_admin';
         $data['content']     = $this->load->view('procurement/manage', $data, TRUE);
         $this->load->view('layout', $data);
     }

@@ -5,8 +5,7 @@ class Procurement extends MY_Controller {
 
     public function index()
     {
-        // ถ้าต้องการให้เฉพาะสมาชิกที่ login แล้วเท่านั้นดูได้ ให้เปิดบรรทัดนี้
-        // $this->check_login();
+        $this->check_login();
 
         $this->load->view('procurement_view');
     }
@@ -17,6 +16,8 @@ class Procurement extends MY_Controller {
      */
     public function data()
     {
+        $this->check_login();
+
         $this->load->model('Procurement_model');
         $tree = $this->Procurement_model->get_full_tree();
 
