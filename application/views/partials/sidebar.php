@@ -3,6 +3,7 @@ $_menus = [
     ['icon' => 'fa-house',         'label' => 'หน้าหลัก',       'url' => 'main_2026/dashboard', 'min_level' => 1, 'key' => 'dashboard'],
     ['icon' => 'fa-cloud', 'label' => 'test',          'url' => '#',                   'min_level' => 1, 'key' => 'test'],
     ['icon' => 'fa-chart-bar',     'label' => 'รายงาน',         'url' => '#',                   'min_level' => 2, 'key' => 'report'],
+    ['icon' => 'fa-file-invoice',  'label' => 'เอกสารจัดซื้อ-จัดจ้าง', 'url' => 'procurement_admin/manage', 'min_level' => 2, 'key' => 'procurement'],
     ['icon' => 'fa-users',         'label' => 'จัดการผู้ใช้',   'url' => 'users/manage',        'min_level' => 2, 'key' => 'users'],
     ['icon' => 'fa-gear',          'label' => 'ตั้งค่าระบบ',    'url' => '#',                   'min_level' => 3, 'key' => 'settings'],
 ];
